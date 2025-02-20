@@ -14,14 +14,19 @@ const BasicForm = () => {
   
     
     const cepAutomatico = (e) => {
-    
-        if(e.target.value.length > 3){
+
+        if(e.target.name == "numero" || e.target.name == "complemento" || e.target.name == "estado"){
             setdataForm((dataForm) => ({...dataForm, [e.target.name]: e.target.value}))
-            }
-            console.log(dataForm.cep)
+        }else{
+            if(e.target.value.length > 3){
+                setdataForm((dataForm) => ({...dataForm, [e.target.name]: e.target.value}))
+                }
+        }
+
+        
     };
 
-
+    console.log(dataForm)
     return ( 
         <div id="container" className="font-bold h-screen flex items-center justify-between bg-neutral-200">
           
@@ -34,7 +39,7 @@ const BasicForm = () => {
                 <form action="#" className="flex flex-col  items-center px-5  gap-1 text-white border-none ">
                     <label className="text-left w-full" htmlFor="cep">CEP</label>
                     <input 
-                    onBlur={cepAutomatico}
+                    onChange={cepAutomatico}
                     name="cep" 
                     placeholder="cep" 
                     type="text" 
