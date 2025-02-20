@@ -10,14 +10,16 @@ const BasicForm = () => {
         bairro:'',
         cidade:'',
         estado:'',
-    })
+    });
   
     
     const cepAutomatico = (e) => {
-    const [dataForm, setdataForm] = useState()
-        
-        
-    }
+    
+        if(e.target.value.length > 3){
+            setdataForm((dataForm) => ({...dataForm, [e.target.name]: e.target.value}))
+            }
+            console.log(dataForm.cep)
+    };
 
 
     return ( 
@@ -32,7 +34,7 @@ const BasicForm = () => {
                 <form action="#" className="flex flex-col  items-center px-5  gap-1 text-white border-none ">
                     <label className="text-left w-full" htmlFor="cep">CEP</label>
                     <input 
-                    onChange={cepAutomatico}
+                    onBlur={cepAutomatico}
                     name="cep" 
                     placeholder="cep" 
                     type="text" 
@@ -40,6 +42,7 @@ const BasicForm = () => {
 
                     <label className="text-left w-full" htmlFor="rua">Rua</label>
                     <input 
+                    onChange={cepAutomatico}
                     name="rua" 
                     type="text" 
                     placeholder="Rua"
@@ -47,18 +50,21 @@ const BasicForm = () => {
 
                     <label className="text-left w-full" htmlFor="numero">Numero</label>
                     <input 
+                    onChange={cepAutomatico}
                     name="numero" placeholder="000" 
                     type="text" 
                     className="bg-[#323232] rounded-md  border-2 border-[#323232] focus:border-neutral-400  pl-4 h-10 w-full focus:outline-none hover:border-neutral-400 "/>
 
                     <label className="text-left w-full" htmlFor="complemento">Complemento (opcional)</label>
                     <input 
+                    onChange={cepAutomatico}
                     name="complemento" placeholder="Apto,Bloco" 
                     type="text" 
                     className="bg-[#323232] rounded-md  border-2 border-[#323232] focus:border-neutral-400  pl-4 h-10 w-full focus:outline-none hover:border-neutral-400 "/>
 
                     <label className="text-left w-full" htmlFor="bairro">Bairro</label>
                     <input 
+                    onChange={cepAutomatico}
                     name="bairro" 
                     type="text" 
                     placeholder="Bairro"
@@ -66,6 +72,7 @@ const BasicForm = () => {
 
                     <label className="text-left w-full" htmlFor="cidade">Cidade</label>
                     <input 
+                    onChange={cepAutomatico}
                     name="cidade" 
                     type="text" 
                     placeholder="Cidade"
@@ -73,6 +80,7 @@ const BasicForm = () => {
 
                     <label className="text-left w-full" htmlFor="estado">Estado</label>
                     <input 
+                    onChange={cepAutomatico}
                     name="estado" 
                     type="text" 
                     placeholder="UF"
